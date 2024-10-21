@@ -1,0 +1,48 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #007bff !important;
+}
+
+.navbar-nav .nav-link {
+    color: #343a40 !important;
+    font-size: 1.1em;
+    padding-right: 20px;
+}
+
+.navbar-nav .nav-item:hover .nav-link {
+    color: #007bff !important;
+}
+
+/* User Info */
+.navbar-nav.ml-auto .nav-link {
+    font-weight: 600;
+}
+
+/* Content Styling */
+.container {
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 10px;
+    }
+
+    .container {
+        margin-top: 15px;
+    }
+}

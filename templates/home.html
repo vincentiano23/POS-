@@ -1,0 +1,51 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container text-center">
+    <h1 class="mt-5">Welcome to the POS System</h1>
+    <p class="lead">Manage your inventory, customers, and sales easily.</p>
+
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Inventory</h5>
+                    <p class="card-text">View and manage all your products.</p>
+                    <a href="{% url 'inventory-list' %}" class="btn btn-primary">Manage Inventory</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Products</h5>
+                    <p class="card-text">Add products here</p>
+                    <a href="{% url 'add-product' %}" class="btn btn-primary mb-3">Add New Product</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Customers</h5>
+                    <p class="card-text">View and manage your customer information.</p>
+                    <a href="{% url 'customer-list' %}" class="btn btn-primary">Manage Customers</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Sales</h5>
+                    <p class="card-text">View all sales orders and transactions.</p>
+                    <a href="{% url 'sales-list' %}" class="btn btn-primary">View Sales</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
