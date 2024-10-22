@@ -1,0 +1,97 @@
+{% extends "base.html" %}  <!-- Extend the base template -->
+{% load static %}  <!-- Load static files -->
+
+{% block content %}  <!-- Define the content block -->
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Sales Dashboard</h1>
+
+      
+    
+        <!-- Area to display current sales data -->
+        <div id="sales-data">
+            <h2>Current Sales</h2>
+            <ul id="sales-list" class="list-group">
+                <!-- Dynamic sales data will be displayed here -->
+            </ul>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card bg-primary text-white shadow-sm">
+                    <div class="card-body">
+                        <h2>Total Sales</h2>
+                        <p class="h3">{{ total_sales }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-success text-white shadow-sm">
+                    <div class="card-body">
+                        <h2>Number of Orders</h2>
+                        <p class="h3">{{ order_count }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="mt-5">Sales Trend (Last 30 Days)</h2>
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <ul class="list-group">
+                    {% for sale in sales_trend %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>{{ sale.day }}</span>
+                            <span class="badge bg-info">{{ sale.total_price__sum }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <h2 class="mt-5">Top Products</h2>
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <ul class="list-group">
+                    {% for product in top_products %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>{{ product.product__name }}</span>
+                            <span class="badge bg-warning">{{ product.total_quantity }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <h2 class="mt-5">Top Customers</h2>
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <ul class="list-group">
+                    {% for customer in top_customers %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>{{ customer.customer__name }}</span>
+                            <span class="badge bg-success">{{ customer.total_spent }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <h2 class="mt-5">Low Stock Products</h2>
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <ul class="list-group">
+                    {% for product in low_stock_products %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>{{ product.name }}</span>
+                            <span class="badge bg-danger">{{ product.quantity }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="chart-container mb-5">
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+{% endblock %}

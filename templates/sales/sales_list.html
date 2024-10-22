@@ -1,9 +1,43 @@
-
 {% extends 'base.html' %}
 
 {% block content %}
 <div class="container">
     <h2>Sales List</h2>
+
+    <div class="sales-actions mb-4">
+        <button id="add-sale-button" class="btn btn-primary">Add Sale</button>
+        <button id="update-sale-button" class="btn btn-warning">Update Sale</button>
+        <button id="remove-sale-button" class="btn btn-danger">Remove Sale</button>
+    </div>
+
+    <!-- Form to add or update sales -->
+    <div id="sales-form" style="display: none;">
+        {% csrf_token %}
+        
+        <h2 id="form-title">Add Sale</h2>
+        <form id="sale-form">
+            <div class="mb-3">
+                <label for="product-id" class="form-label">Product ID:</label>
+                <input type="number" id="product-id" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="quantity" class="form-label">Quantity:</label>
+                <input type="number" id="quantity" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="customer-id" class="form-label">Customer ID:</label>
+                <input type="number" id="customer-id" class="form-control" required>
+            </div>
+
+            <input type="hidden" id="sale-id"> <!-- Hidden field for update -->
+
+            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="button" id="cancel-button" class="btn btn-secondary">Cancel</button>
+        </form>
+    </div>
+    
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
             <tr>
@@ -13,7 +47,7 @@
                 <th>Total Price</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="sales-list">
             {% for sale in sales %}
             <tr>
                 <td>{{ sale.id }}</td>
@@ -26,3 +60,5 @@
     </table>
 </div>
 {% endblock %}
+
+
